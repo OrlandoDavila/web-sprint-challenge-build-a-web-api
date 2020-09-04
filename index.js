@@ -1,3 +1,28 @@
+
+const express = require("express");
+const server = express();
+const port = process.env.PORT || 5000;
+const projectRouter = require("./routers/project-router");
+const actionRouter = require("./routers/action-router");
+server.use(express.json());
+
+server.use("/api/project", projectRouter);
+server.use("/api/actions", actionRouter);
+
+server.get("/", (req, res) => {
+  res.json({ message: "Meowdy Ya'lls!" });
+});
+
+server.listen(port, () => {
+    console.log(`\n*** Server Running on http://localhost:${port} ***\n`);
+  });
+
+
+
+
+
+
+
 /*
 play this: https://www.youtube.com/watch?v=d-diB65scQU
 
